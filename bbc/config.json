@@ -1,0 +1,38 @@
+{
+    "version": "2.0",
+
+    "vendedor": {
+        "nombre": "Carlos",
+        "pais": "Argentina",
+        "idioma": "es"
+    },
+
+    "whatsapp": {
+        "comprar": "abc123",
+        "ayuda": "",
+        "contacto": "",
+        "alternativo": ""
+    },
+
+    "telegram": {
+        "contacto": "CarlosAscensum",
+        "alternativo": ""
+    },
+
+    "blockchain": {
+    "wallet": "0xB828B26f97245EE744F75Bb3851905C89B0c07A0"
+    },
+
+    "redes": {
+        "facebook": "",
+        "instagram": "",
+        "youtube": "",
+        "x": "",
+        "tiktok": "",
+        "linkedin": "",
+        "discord": "",
+        "github": "",
+        "sitioWeb": "",
+        "email": ""
+    }
+}

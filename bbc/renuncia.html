@@ -1,0 +1,2598 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Renuncia al Contrato y Liquidez</title>
+    <link rel="icon" type="image/png" href="../imagenes/pets_universe.png">
+
+    <style>
+        /* ======= RESET / SEGURIDAD LAYOUT ======= */
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            /* evita desplazamiento lateral */
+            -webkit-text-size-adjust: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        img,
+        iframe,
+        embed,
+        object,
+        video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ===================== ENCABEZADO ===================== */
+        .top-bar {
+            position: relative;
+            height: 40px;
+        }
+
+        .green-bar {
+            background-color: #3a8308;
+            height: 110px;
+            width: 100%;
+        }
+
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #000;
+            border-radius: 25px;
+            width: 95%;
+            max-width: 1200px;
+            min-height: 96px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 999;
+            transition: all 0.4s ease;
+            box-sizing: border-box;
+        }
+
+        .nav-bar.scrolled {
+            min-height: 80px;
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            max-height: 60px;
+            width: auto;
+            transition: max-height .3s ease;
+        }
+
+        .nav-bar.scrolled .logo img {
+            max-height: 50px;
+        }
+
+        .logo-text {
+            color: yellow;
+            font-size: 1.05rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: font-size .3s ease;
+            white-space: nowrap;
+        }
+
+        .logo-text:hover {
+            color: #a8e6a3;
+        }
+
+        .nav-bar.scrolled .logo-text {
+            font-size: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: yellow;
+            text-decoration: none;
+            font-size: 0.98rem;
+            transition: color .3s;
+        }
+
+        .nav-links a:hover {
+            color: #a8e6a3;
+        }
+
+        /* ===================== CONTENIDO PRINCIPAL ===================== */
+        main {
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 900px;
+            width: 100%;
+            line-height: 1.4;
+            font-size: 18px;
+            margin-top: 120px;
+            /* espacio por la barra fija */
+            box-sizing: border-box;
+            overflow-wrap: break-word;
+            /* evita desbordes por links largos */
+            word-break: break-word;
+        }
+
+        main a {
+            color: red;
+            text-decoration: none;
+            transition: color .3s;
+        }
+
+        main a:hover {
+            color: #3a8308;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        h2 {
+            font-size: 1.6em;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        h3 {
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        /* ===================== VIDEO RESPONSIVE ===================== */
+        .video-container {
+            text-align: center;
+            margin: 40px 0;
+            padding: 0 10px;
+            /* evita que el iframe quede pegado al borde en pantallas pequeñas */
+            box-sizing: border-box;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16/9;
+            border: 0;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* ===================== PIE DE PÁGINA ===================== */
+        .footer-top-green {
+            background-color: #3a8308;
+            height: 20px;
+            width: 100%;
+        }
+
+        .footer-black {
+            background-color: #000;
+            min-height: 95px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+        }
+
+        .footer-black div {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .footer-black .left {
+            color: yellow;
+            font-size: 16px;
+        }
+
+        .footer-black .right {
+            text-align: right;
+        }
+
+        .footer-black .right a {
+            color: yellow;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+
+        .footer-black .right a:hover {
+            color: #a8e6a3;
+        }
+
+        .footer-bottom-green {
+            background-color: #3a8308;
+            height: 25px;
+            width: 100%;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 768px) {
+            .nav-bar {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+                gap: 8px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+            }
+
+            main {
+                font-size: 16px;
+                padding: 15px;
+            }
+
+            .video-container {
+                margin: 20px 0;
+                padding: 0 8px;
+            }
+
+            .footer-black {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-black .right {
+                margin-top: 10px;
+                text-align: center;
+            }
+        }
+
+        .img-main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.img-main-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.img-main-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+        /* Ocultar barras en celular horizontal */
+@media screen and (max-width:1000px) and (orientation:landscape) {
+
+    .nav-bar,
+    .green-bar {
+        display:none !important;
+    }
+
+}
+
+@media screen and (max-width:1000px) and (orientation:landscape) {
+
+  .video-box {
+      max-width: 75% !important;
+  }
+
+}
+
+
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ===================== ENCABEZADO ===================== -->
+  <div class="top-bar">
+    <div class="green-bar"></div>
+    <div class="nav-bar">
+      <div class="logo-container">
+
+        <a href="" target="_blank" class="logo">
+          <img src="../imagenes/Pets_Concilium.png" alt="Logo Concilium">
+        </a>
+
+
+
+        <a href="" target="_blank" class="logo-text">Criptovision Marketing Global Ecom</a>
+
+      </div>
+      <div class="nav-links">
+        
+        <a href="academia.html" target="_blank">Academia</a>
+        <a href="index.html" target="_blank">Ascensum Dao</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CONTENIDO PRINCIPAL ===================== -->
+  
+    <main>
+        
+
+
+
+
+        <div style="margin-top:10px;">
+        <h1>Cómo verificar la transparencia del Token ASM</h1>
+
+
+        <p>
+        🔥 En el mundo de las criptomonedas existen grandes oportunidades, pero también riesgos que todo inversor debería conocer.<br>
+        <br>
+        Por eso, antes de participar en cualquier proyecto, es importante aprender a verificar información clave de forma independiente.<br>
+        <br>
+        En esta guía veremos cómo comprobar algunos de los aspectos más importantes relacionados con la seguridad y transparencia del token ASM:<br>
+        <br>
+        ✅ Contrato renunciado (Ownership Renounced)<br>
+        ✅ Liquidez quemada (Liquidity Burned)<br>
+        ✅ Auditorías de seguridad<br>
+        ✅ Información pública disponible en BSCScan y DexScreener<br>
+        <br>
+        El objetivo no es pedir confianza ciega, sino mostrar cómo cualquier persona puede verificar por sí misma la información registrada en la blockchain.
+        </p>
+        </div> 
+
+
+
+
+        <div style="margin-top:60px; margin-bottom:60px;">
+
+                <img src="../imagenes/asm.jpg"
+                alt="Asm nacido de una comunidad cansada de estafas"
+                style="max-width:550px;
+                width:100%;
+                height:auto;
+                display:block;
+                margin:auto;">
+
+                </div>
+
+        
+
+
+                
+        
+
+
+        <div style="margin-top:60px;">
+        <h1>¿Qué significa que el contrato fue renunciado?</h1>  
+         
+
+        <p>
+        Cuando se crea un token, el desarrollador suele tener permisos administrativos especiales dentro del contrato inteligente.<br>
+        <br>
+        Dependiendo de cómo haya sido programado el contrato, esos permisos podrían permitir acciones como:<br>
+        <br>
+        ✔ Modificar determinadas configuraciones<br>
+        ✔ Cambiar parámetros internos<br>
+        ✔ Actualizar direcciones del sistema<br>
+        ✔ Alterar ciertas funciones administrativas<br>
+        <br>
+        Cuando un contrato es renunciado (Ownership Renounced), el propietario elimina voluntariamente esos privilegios administrativos.<br>
+        <br>
+        En términos simples:<br>
+        <br>
+        ✅ El creador deja de tener control sobre las funciones administrativas del contrato.<br>
+        <br>
+        A partir de ese momento, el contrato queda funcionando de forma automática y permanente en la blockchain según las reglas establecidas en su programación original y dichas funciones ya no pueden ser modificadas por el desarrollador.
+        </p>
+        </div> 
+
+
+         
+
+        <div style="margin-top:100px;">
+         <h1>¿Por qué es importante?</h1>
+
+        <p>
+        Porque ayuda a reducir el riesgo de cambios unilaterales por parte del creador.<br>
+        Para un inversor esto significa que:<br>
+        <br>
+        ✔ Las reglas del contrato no pueden modificarse posteriormente mediante privilegios administrativos.<br>
+        ✔ El desarrollador pierde el control directo sobre funciones críticas del contrato.<br>
+        ✔ El proyecto gana transparencia y descentralización.<br>
+        <br>
+        Eso genera más confianza.<br>
+        Por este motivo, el estado <b>"Ownership Renounced"</b> es considerado una señal positiva dentro del ecosistema cripto.<br>
+        </p>
+        </div> 
+
+        
+
+
+
+        <div style="margin-top:100px;">
+        <h1>¿Qué significa que la liquidez fue quemada?</h1>  
+         
+         <p>
+        La liquidez es la que permite que los usuarios puedan comprar, vender e intercambiar un token dentro del mercado.<br>
+
+        Sin liquidez, un token prácticamente no puede operar. 
+        </p>
+        </div> 
+
+
+        <div style="margin-top:60px;">
+        <h2> El riesgo en algunos proyectos</h2> 
+
+
+        <p>
+        En ciertos proyectos, los desarrolladores conservan el control sobre la liquidez.<br>
+
+        Si esa liquidez es retirada repentinamente, los inversores pueden encontrarse con grandes dificultades para vender sus tokens.<br>
+        A esta práctica se la conoce comúnmente como "Rug Pull".
+        </p>
+        </div> 
+
+
+
+
+
+        <div style="margin-top:60px;">
+        <h2>¿Qué ocurre cuando la liquidez es quemada?</h2>
+
+        <p>
+        Cuando la liquidez es quemada (Liquidity Burned), los tokens LP (Liquidity Provider) son enviados a una dirección irrecuperable conocida como "dead wallet".<br>
+        <br>
+        <b>Esto implica que:</b><br>
+
+        ✅ La liquidez no puede ser retirada.<br>
+
+        ✅ El desarrollador pierde acceso a ella.<br>
+
+        ✅ Permanece bloqueada de forma permanente en la blockchain.
+        </p>
+        </div> 
+
+
+
+
+
+        <div style="margin-top:60px;">
+        <h2>¿Por qué es relevante?</h2>
+
+        <p>
+        Porque elimina la posibilidad de que el creador retire posteriormente esa liquidez.<br>
+
+        Para muchos inversores, la liquidez quemada representa una importante señal de compromiso a largo plazo y transparencia operativa.<br>
+        </p>
+        </div>            
+
+
+
+
+
+        <div style="margin-top:60px; margin-bottom:50px;">
+        <h3>🔹 La blockchain permite verificar gran parte de la información públicamente.</h3>
+
+        <p>
+        En lugar de basar una decisión únicamente en opiniones o promesas, cualquier persona puede consultar contratos, auditorías, liquidez y transacciones directamente en los exploradores blockchain.<br>
+        <br>
+
+        La educación y la verificación independiente son algunas de las mejores herramientas que tiene un inversor para reducir riesgos y tomar decisiones informadas.
+        </p>
+        </div>  
+        
+        
+
+
+
+                <!-- ===================== VIDEO RESPONSIVE ===================== -->
+
+
+     <div class="video-box"
+     data-video="9tFRfbSu6t0"         
+     style="position:relative;max-width:800px;margin:auto;cursor:pointer;"
+     onclick="loadVideo(this)">
+
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+
+    <!-- Miniatura -->
+    <img src="https://img.youtube.com/vi/9tFRfbSu6t0/hqdefault.jpg"    
+         style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+
+    <!-- Botón Play -->
+    <div class="play-button"></div>
+
+  </div>
+
+</div>
+
+
+
+<style>
+.play-button {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:80px;
+  height:80px;
+  background:rgba(0,0,0,0.6);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:videopulse 1.5s infinite;
+}
+
+.play-button::before {
+  content:'';
+  width:0;
+  height:0;
+  border-left:25px solid white;
+  border-top:15px solid transparent;
+  border-bottom:15px solid transparent;
+}
+
+@keyframes videopulse {
+  0% { transform:translate(-50%,-50%) scale(1); }
+  50% { transform:translate(-50%,-50%) scale(1.1); }
+  100% { transform:translate(-50%,-50%) scale(1); }
+}
+
+/* Fade-in */
+.fade-in {
+  opacity:0;
+  transition:opacity 0.8s ease;
+}
+
+.fade-in.show {
+  opacity:1;
+}
+
+
+</style>
+
+
+
+<script>
+function loadVideo(el) {
+
+  const videoId = el.getAttribute("data-video");
+
+  el.innerHTML = `
+   <div style="position:relative;padding-bottom:56.25%;height:0;">
+
+  <iframe
+    class="ytvideo fade-in"
+    src="https://www.youtube.com/embed/${videoId}?controls=1&rel=0&playsinline=1"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+
+</div>
+  `;
+
+  setTimeout(() => {
+    el.querySelector(".ytvideo").classList.add("show");
+  }, 100);
+}
+</script>
+
+
+
+         <!-- ===================== FIN DEL VIDEO RESPONSIVE ===================== -->
+
+
+
+
+                            <div style="margin-bottom:10px;">
+                <h2>Estás a una decisión de cambiar tu posición en el mundo cripto</h2>
+                </div>
+                
+
+                <p style="text-align:center; font-size:18px; line-height:1.8; max-width:950px; margin:auto;">
+
+
+                <br>
+                ¿Estás listo para dar el siguiente paso?<br>
+                 Haz click abajo y asegura tu Nodo ahora.<br>
+                </p>
+                
+                
+
+
+<!-- ===================================================== -->
+<!-- ========== COMIENZA BOTÓN COMPRAR NODO ============== -->
+<!-- ===================================================== -->
+
+<!--
+PERSONALIZACIÓN RÁPIDA
+
+CAMBIAR POSICIÓN:
+center = centro
+left = izquierda
+right = derecha
+
+CAMBIAR COLOR:
+Busca:
+background: linear-gradient(...)
+
+CAMBIAR TAMAÑO:
+padding: 16px 30px;
+font-size: 18px;
+
+CAMBIAR TEXTO:
+Quiero vender Nodos Ascensum
+
+CAMBIAR LINK:
+Reemplazar TU_LINK_AQUI
+
+-->
+
+
+<!-- CONTENEDOR DEL BOTÓN -->
+<div class="cta-container">
+
+
+    <!-- BOTÓN -->
+    <a target="_blank"
+   rel="noopener noreferrer"
+   class="cta-pro asm-link-comprar">
+
+
+        <!-- TEXTO DEL BOTÓN -->
+        <span>Quiero comprar mi primer Nodo y comenzar</span>
+
+        <!-- FLECHA -->
+        <svg class="arrow" width="20" height="20" viewBox="0 0 24 24">
+            <path d="M5 12h14M13 5l7 7-7 7"
+                  stroke="white"
+                  stroke-width="2"
+                  fill="none"/>
+        </svg>
+
+    </a>
+
+</div>
+
+<style>
+
+/* ===================================================== */
+/* ================= POSICIÓN BOTÓN ==================== */
+/* ===================================================== */
+
+.cta-container {
+
+    /* CAMBIAR:
+       center = centro
+       left = izquierda
+       right = derecha
+    */
+
+    text-align: center;
+
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+/* ===================================================== */
+/* ==================== BOTÓN ========================== */
+/* ===================================================== */
+
+.cta-pro {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    /* TAMAÑO BOTÓN */
+    padding: 16px 30px;
+
+    /* TAMAÑO TEXTO */
+    font-size: 18px;
+
+    font-weight: 600;
+    color: #121211;
+
+    /* COLOR BOTÓN */
+    background: linear-gradient(135deg, #00c853, #00e676);
+
+    border-radius: 14px;
+    text-decoration: none;
+
+    /* SOMBRA */
+    box-shadow: 0 10px 25px rgba(0, 200, 83, 0.35);
+
+    transition: all 0.3s ease;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    animation: pulse 2.5s infinite;
+}
+
+/* ===================================================== */
+/* ===================== HOVER ========================= */
+/* ===================================================== */
+
+.cta-pro:hover {
+
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow: 0 15px 35px rgba(0, 200, 83, 0.6);
+}
+
+/* ===================================================== */
+/* ===================== CLICK ========================= */
+/* ===================================================== */
+
+.cta-pro:active {
+    transform: scale(0.96);
+}
+
+/* ===================================================== */
+/* ================= FLECHA ANIMADA ==================== */
+/* ===================================================== */
+
+.cta-pro .arrow {
+    transition: transform 0.3s ease;
+}
+
+.cta-pro:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* ===================================================== */
+/* ================= EFECTO PULSE ====================== */
+/* ===================================================== */
+
+@keyframes pulse {
+
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(0, 200, 83, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0);
+    }
+}
+
+/* ===================================================== */
+/* ============== APARECER CON SCROLL ================= */
+/* ===================================================== */
+
+.cta-pro.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+</style>
+
+<script>
+
+/* ===================================================== */
+/* ========= MOSTRAR BOTÓN AL HACER SCROLL ============ */
+/* ===================================================== */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+const botones = document.querySelectorAll(".cta-pro");
+
+function showOnScroll() {
+
+    const trigger = window.innerHeight * 0.8;
+
+    botones.forEach(btn => {
+
+        const rect = btn.getBoundingClientRect();
+
+        if (rect.top < trigger) {
+            btn.classList.add("visible");
+        }
+
+    });
+
+}
+
+window.addEventListener("scroll", showOnScroll);
+
+showOnScroll();
+});
+
+</script>
+
+        
+
+
+        <!-- ===================== FIN DEL BOTON COMPRAR NODO ===================== -->
+
+
+
+
+
+
+
+
+
+                <div style="margin-top:80px;">
+                <h2>🔹 Cómo Auditar el Token ASM en DexScreener</h2>
+                
+                <p>
+                Una de las ventajas de la tecnología blockchain es que gran parte de la información de un proyecto puede verificarse públicamente.<br>
+                <br>
+                No es necesario confiar únicamente en lo que dice un equipo o una comunidad.<br>
+                Cualquier persona puede consultar los datos directamente en herramientas especializadas como DexScreener.
+                </p>
+                </div>  
+
+
+
+
+
+                <div style="margin-top:80px;">
+                <h2>Contrato del Token ASM</h2>
+
+                
+                <h3>Este es el contrato oficial del token ASM:</h3>
+                </div> 
+
+
+
+
+
+
+                <!-- ===================== COMIENZA BOTON COPIAR ===================== --> 
+
+
+                <div style=" 
+                background:#111; 
+                padding:15px; 
+                border-radius:12px; 
+                text-align:center; 
+                margin-top:20px; 
+                "> 
+
+                <span id="refContrato" style=" 
+                color:#FBFF00; 
+                font-size:16px; 
+                word-break:break-all; 
+                display:block; 
+                margin-bottom:15px; 
+                "> 
+                0xc16a37ef0066b641a3b64cf892dfde63ecf25f81 
+                </span> 
+
+                    
+                <button onclick="copiarContrato()" style=" 
+                background:#378B18; 
+                color:white; 
+                border:none; 
+                padding:12px 25px; 
+                border-radius:8px; 
+                font-size:16px; 
+                cursor:pointer; 
+                font-weight:bold; 
+                transition:0.3s; 
+                "> 
+                📋 Copiar Contrato 
+                </button> 
+
+                <p id="mensajeCopiado" style=" 
+                color:#00ff88; 
+                margin-top:10px; 
+                display:none; 
+                font-weight:bold; 
+                "> 
+                ✅ Contrato copiado correctamente 
+                </p> 
+
+                </div> 
+
+                <script> 
+                function copiarContrato() { 
+
+                const texto = 
+                document.getElementById("refContrato").innerText; 
+                
+                navigator.clipboard.writeText(texto); 
+
+                document.getElementById("mensajeCopiado").style.display = "block"; 
+
+                setTimeout(() => { 
+                document.getElementById("mensajeCopiado").style.display = "none"; 
+                }, 2500); 
+
+                } 
+                </script> 
+
+
+
+
+                <!--===================== FIN DEL BOTON COPIAR ===================== -->
+
+
+
+
+
+                 <div style="margin-top:100px;">
+                <h3>También puedes acceder directamente a su información pública desde DexScreener:</h3>
+                <div>
+                
+
+
+
+
+                                <!-- ===================== COMIENZA BOTON ENVIAR ===================== -->
+
+
+                   <div style="
+background:linear-gradient(145deg,#111,#1b1b1b);
+padding:25px;
+border-radius:18px;
+text-align:center;
+margin-top:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+border:1px solid rgba(255,255,255,0.08);
+width:100%;
+box-sizing:border-box;
+">
+
+<h3 style="
+color:white;
+margin-bottom:18px;
+font-size:22px;
+">
+Acceder a Dexscreener               <!-- ====== Modificar ===== -->
+</h3>
+
+<div style="
+background:#0d0d0d;
+padding:15px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.06);
+margin-bottom:20px;
+">
+
+<span style="
+color:#FBFF00;
+font-size:15px;
+word-break:break-all;
+line-height:1.6;
+font-family:monospace;
+">
+https://dexscreener.com                            <!-- ====== Modificar ===== -->
+</span>
+
+</div>
+
+<button onclick="abrirDex()" class="btnDex">     <!-- ====== Ver ===== -->
+🔗 Ingresar al Dex
+</button>
+
+</div>
+
+<style>
+
+.btnDex{
+width:30%;                       
+max-width:400px;    
+background:linear-gradient(135deg,#46b51f,#2f7e15);
+color:white;
+border:none;
+padding:14px 28px;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:all 0.3s ease;
+box-shadow:0 6px 18px rgba(55,139,24,0.35);
+letter-spacing:0.5px;
+}
+
+.btnDex:hover{
+transform:translateY(-3px) scale(1.03);
+box-shadow:0 10px 25px rgba(55,139,24,0.55);
+background:linear-gradient(135deg,#52d323,#378B18);
+}
+
+.btnDex:active{
+transform:scale(0.97);
+}
+
+</style>
+
+<script>
+
+function abrirDex(){                   
+
+window.open(
+"https://dexscreener.com/bsc/0xc16a37ef0066b641a3b64cf892dfde63ecf25f81",
+"_blank"
+);
+
+}
+
+</script>
+
+
+
+      <!-- ===================== FIN BOTON ENVIAR ===================== -->
+
+
+
+
+
+
+
+
+                <div style="margin-top:80px;">
+                <h2>Evolución del Precio</h2>
+
+                <p>
+                Al ingresar a DexScreener, lo primero que encontrarás es el gráfico de evolución del token.<br>
+                <br>
+
+                Este gráfico muestra cómo se ha comportado el precio desde el día de su lanzamiento y permite observar visualmente su crecimiento, estabilidad o posibles correcciones a lo largo del tiempo.<br>
+                <br>
+
+                ASM fue lanzado el 7 de marzo de 2026 con un precio inicial de 3,19 USDT.<br>
+                En la siguiente imagen puedes observar la evolución histórica del token desde su lanzamiento.
+                </p>
+                </div> 
+
+
+
+                 <div style="margin-top:40px; margin-bottom:100px;">
+
+    <img src="../imagenes/Dexscreener_1.1.png"
+         alt="Como verificar un contrato en bscscan"
+         style="max-width:700px;
+                width:100%;
+                height:auto;
+                display:block;
+                margin:auto;">
+
+                </div>
+
+
+
+
+                <div style="margin-top:80px;">
+                <h2>Precio y Liquidez</h2>
+                
+
+                <p>
+                Además del gráfico, DexScreener muestra información importante sobre el estado actual del token.<br>
+
+                En el recuadro resaltado podrás identificar:<br>
+                <br>
+                ✔ Precio actual del token.<br>
+
+                ✔ Liquidez disponible.<br>
+                <br>
+                <b>Por ejemplo:</b><br>
+
+                Precio: 9,53 USDT<br>
+
+                Liquidez: 749.000 USDT
+                </p>
+                </div> 
+
+
+
+
+
+
+                <div style="margin-top:40px;">
+                <h2>¿Qué significa la Liquidez?</h2>
+                
+
+                <p>
+                La liquidez representa los fondos disponibles que permiten que las personas puedan comprar y vender el token en cualquier momento.<br>
+                <br>
+                En términos simples, cuanto mayor sea la liquidez, más facilidad existe para realizar operaciones dentro del mercado.
+                </p>
+                </div> 
+               
+
+
+                <div style="margin-top:20px; margin-bottom:80px;">
+
+    <img src="../imagenes/Dexscreener_1.png"
+         alt="Como verificar un contrato en bscscan"
+         style="max-width:400px;
+                width:100%;
+                height:auto;
+                display:block;
+                margin:auto;">
+
+                </div>
+
+
+
+
+                 <div style="margin-top:80px;">
+                <h2>Verificando si la Liquidez está Protegida</h2>
+                 
+
+                <p>
+                Junto al valor de la liquidez encontrarás un pequeño icono con forma de candado.<br>
+
+                Al hacer clic sobre él, DexScreener mostrará información adicional sobre el estado de la liquidez.<br>
+                <br>
+                <b>En el caso de ASM, la información indica:</b><br>
+
+                ✅ Liquidez 100% Bloqueada.<br>
+
+                ✅ Liquidez 100% Quemada.<br>
+                <br>
+                Esto significa que los tokens LP asociados a esa liquidez fueron enviados a una dirección irrecuperable y ya no pueden ser utilizados para retirar los fondos.<br>
+
+                En otras palabras, la liquidez quedó permanentemente bloqueada dentro del ecosistema.
+                </p>
+                </div>
+
+
+
+
+
+
+
+                <div style="margin-top:40px;">
+                <h2>¿Por qué es importante?</h2>
+                
+                <p>
+                Cuando la liquidez permanece bloqueada y quemada, el desarrollador no puede retirarla posteriormente.<br>
+
+                Esto elimina uno de los riesgos más conocidos dentro del mercado cripto, conocido como Rug Pull, donde un proyecto retira la liquidez y deja a los inversores sin posibilidad de operar normalmente.<br>
+                <br>
+
+                Por este motivo, una liquidez bloqueada y quemada es una condición de alta seguridad y suele considerarse una señal positiva de transparencia y compromiso a largo plazo.
+                </p>
+                </div>
+
+
+
+
+
+                             <div style="margin-top:40px; margin-bottom:80px;">
+
+    <img src="../imagenes/Dexscreener_2.jpg"
+         alt="Como verificar un contrato en bscscan"
+         style="max-width:400px;
+                width:100%;
+                height:auto;
+                display:block;
+                margin:auto;">
+
+                </div>
+
+
+
+
+
+
+                <div style="margin-top:80px;">
+                <h2>Verificando las Auditorías del Token</h2>
+                
+                <p>
+                Si continuamos bajando dentro de DexScreener, encontraremos una sección muy importante: las auditorías automáticas realizadas por diferentes plataformas especializadas en seguridad blockchain.<br>
+                <br>
+
+                <b>Entre ellas se encuentran:</b><br>
+
+                ✔ Go+ Security<br>
+
+                ✔ Quick Intel<br>
+
+                ✔ Token Sniffer<br>
+                <br>
+
+                Estas herramientas analizan el contrato inteligente y buscan características que podrían representar riesgos para los inversores.<br>
+                <br>
+                En el caso de ASM, los resultados aparecen en color verde, indicando que no se detectaron riesgos críticos conocidos durante el análisis.<br>
+                <br>
+                Si haces click sobre cualquiera de estas auditorías, podrás acceder al informe detallado y verificar la información por tu cuenta.
+                </p>
+                </div>
+
+
+
+
+
+
+
+                <div style="margin-top:40px; margin-bottom:80px;">
+
+    <img src="../imagenes/Dexscreener_3.png"
+         alt="Como verificar un contrato en bscscan"
+         style="max-width:400px;
+                width:100%;
+                height:auto;
+                display:block;
+                margin:auto;">
+
+                </div>
+
+
+
+                <div style="margin-top:80px;">
+                <h2>Ejemplo de Auditoría con Go+ Security</h2>
+                
+
+                <p>
+                Al abrir el informe de Go+ Security podrás observar numerosos indicadores relacionados con la seguridad y el funcionamiento del contrato.<br>
+                <br>
+
+                <b>Por ejemplo:</b><br>
+
+                ✅ No existen comisiones ocultas de compra o venta (Fees).<br>
+
+                ✅ El contrato fue renunciado (Ownership Renounced).<br>
+
+                ✅ El creador ya no posee privilegios administrativos sobre el contrato.<br>
+                <br>
+
+                Además de estos puntos principales, la auditoría muestra otros indicadores técnicos que ayudan a comprender mejor cómo funciona el token.
+                </p>
+                </div>
+
+
+
+
+                <!-- ===================== COMIENZA IMAGEN ===================== -->
+
+
+                <div style="margin-top:40px;">
+
+    <img src="../imagenes/Dexscreener_4.png"
+         alt="Como verificar un contrato en bscscan"
+         style="max-width:400px;
+                width:100%;
+                height:auto;
+                display:block;
+                margin:auto;">
+
+                </div>
+
+                <!-- ===================== TERMINA IMAGEN ===================== -->
+
+
+
+
+               
+                <!-- ===================== COMIENZA IMAGEN ===================== -->
+
+
+                <div style="margin-bottom:80px;">
+
+    <img src="../imagenes/Dexscreener_5.png"
+         alt="Como verificar un contrato en bscscan"
+         style="max-width:400px;
+                width:100%;
+                height:auto;
+                display:block;
+                margin:auto;">
+
+                </div>
+
+                <!-- ===================== TERMINA IMAGEN ===================== -->
+
+
+
+
+
+
+                <div style="margin-top:80px;">
+                <h2>¿Qué significan estos indicadores?</h2>
+                
+                <p>
+                Estas verificaciones aportan información importante para evaluar la transparencia y las características técnicas del contrato. 
+                <br>
+                <br>                   
+                <b>Tax Modifiable: No</b><br>
+
+                Significa que el desarrollador no puede modificar posteriormente los impuestos o comisiones del token.<br>
+                <br>
+
+                <b>Hidden Owner: No</b><br>
+
+                Indica que no existe un propietario oculto con privilegios especiales dentro del contrato.
+                <br>
+                <br>
+
+                <b>Open Source: Yes</b><br>
+
+                El código del contrato es público y puede ser revisado por cualquier persona.<br>
+                Esto aporta transparencia porque permite que desarrolladores y auditores analicen su funcionamiento.
+                <br>
+                <br>
+
+                <b>Honeypot: No</b><br>
+
+                Un Honeypot es una estafa donde los usuarios pueden comprar un token pero luego no pueden venderlo.<br>
+                La auditoría indica que ASM no presenta ese comportamiento.
+                <br>
+                <br>
+
+
+                <b>Mintable: No</b><br>
+
+                Significa que el contrato no puede crear nuevas monedas de forma arbitraria.<br>
+                La cantidad de tokens está controlada por las reglas definidas en el proyecto, solo se puede minar un token nuevo con la compra de un nodo.
+                <br>
+                <br>
+
+                <b>Transfer Pausable: No</b><br>
+
+                Indica que nadie puede pausar o bloquear las transferencias entre usuarios.
+                <br>
+                <br>
+
+
+
+                <b>Owner Can Change Balance: No</b><br>
+
+                El propietario no puede modificar manualmente los saldos de los usuarios.
+                <br>
+                <br>
+
+                <b>Has Blacklist: No</b><br>
+
+                No existe una función para bloquear direcciones específicas e impedirles operar.
+                <br>
+                <br>
+
+
+                <b>Has Whitelist: No</b><br>
+
+                No existe una lista privada de usuarios con privilegios especiales para operar.
+                <br>
+                <br>
+
+
+                <b>Creator Balance: 0%</b><br>
+
+                La billetera creadora no posee tokens ASM.
+                <br>
+                <br>
+
+
+                <b>Owner Address: 0x000...0000</b><br>
+
+                Esta dirección es conocida como la dirección nula o "dead address".<br>
+
+                Su presencia es una de las señales utilizadas para verificar que el contrato fue efectivamente renunciado.
+                </p>
+                </div>
+
+
+
+
+
+
+                <!-- ===================== COMIENZA LINEA ===================== -->
+
+                <hr style="margin-top:60px; margin-bottom:60px;">
+
+                <!-- ===================== TERMINA LINEA ===================== -->
+
+
+                
+
+                            <div style="margin-bottom:10px;">
+                <h2>Estás a una decisión de cambiar tu posición en el mundo cripto</h2>
+                </div>
+                
+
+                <p style="text-align:center; font-size:18px; line-height:1.8; max-width:950px; margin:auto;">
+
+
+                <br>
+                ¿Estás listo para dar el siguiente paso?<br>
+                 Haz click abajo y asegura tu Nodo ahora.<br>
+                </p>
+                
+                
+
+
+
+
+<!-- ===================================================== -->
+<!-- ========== COMIENZA BOTÓN COMPRAR NODO ============== -->
+<!-- ===================================================== -->
+
+<!--
+PERSONALIZACIÓN RÁPIDA
+
+CAMBIAR POSICIÓN:
+center = centro
+left = izquierda
+right = derecha
+
+CAMBIAR COLOR:
+Busca:
+background: linear-gradient(...)
+
+CAMBIAR TAMAÑO:
+padding: 16px 30px;
+font-size: 18px;
+
+CAMBIAR TEXTO:
+Quiero vender Nodos Ascensum
+
+CAMBIAR LINK:
+Reemplazar TU_LINK_AQUI
+
+-->
+
+
+<!-- CONTENEDOR DEL BOTÓN -->
+<div class="cta-container">
+
+
+    <!-- BOTÓN -->
+    <a target="_blank"
+   rel="noopener noreferrer"
+   class="cta-pro asm-link-comprar">
+
+
+        <!-- TEXTO DEL BOTÓN -->
+        <span>Quiero comprar mi primer Nodo y comenzar</span>
+
+        <!-- FLECHA -->
+        <svg class="arrow" width="20" height="20" viewBox="0 0 24 24">
+            <path d="M5 12h14M13 5l7 7-7 7"
+                  stroke="white"
+                  stroke-width="2"
+                  fill="none"/>
+        </svg>
+
+    </a>
+
+</div>
+
+<style>
+
+/* ===================================================== */
+/* ================= POSICIÓN BOTÓN ==================== */
+/* ===================================================== */
+
+.cta-container {
+
+    /* CAMBIAR:
+       center = centro
+       left = izquierda
+       right = derecha
+    */
+
+    text-align: center;
+
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+/* ===================================================== */
+/* ==================== BOTÓN ========================== */
+/* ===================================================== */
+
+.cta-pro {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    /* TAMAÑO BOTÓN */
+    padding: 16px 30px;
+
+    /* TAMAÑO TEXTO */
+    font-size: 18px;
+
+    font-weight: 600;
+    color: #121211;
+
+    /* COLOR BOTÓN */
+    background: linear-gradient(135deg, #00c853, #00e676);
+
+    border-radius: 14px;
+    text-decoration: none;
+
+    /* SOMBRA */
+    box-shadow: 0 10px 25px rgba(0, 200, 83, 0.35);
+
+    transition: all 0.3s ease;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    animation: pulse 2.5s infinite;
+}
+
+/* ===================================================== */
+/* ===================== HOVER ========================= */
+/* ===================================================== */
+
+.cta-pro:hover {
+
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow: 0 15px 35px rgba(0, 200, 83, 0.6);
+}
+
+/* ===================================================== */
+/* ===================== CLICK ========================= */
+/* ===================================================== */
+
+.cta-pro:active {
+    transform: scale(0.96);
+}
+
+/* ===================================================== */
+/* ================= FLECHA ANIMADA ==================== */
+/* ===================================================== */
+
+.cta-pro .arrow {
+    transition: transform 0.3s ease;
+}
+
+.cta-pro:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* ===================================================== */
+/* ================= EFECTO PULSE ====================== */
+/* ===================================================== */
+
+@keyframes pulse {
+
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(0, 200, 83, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0);
+    }
+}
+
+/* ===================================================== */
+/* ============== APARECER CON SCROLL ================= */
+/* ===================================================== */
+
+.cta-pro.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+</style>
+
+<script>
+
+/* ===================================================== */
+/* ========= MOSTRAR BOTÓN AL HACER SCROLL ============ */
+/* ===================================================== */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+const botones = document.querySelectorAll(".cta-pro");
+
+function showOnScroll() {
+
+    const trigger = window.innerHeight * 0.8;
+
+    botones.forEach(btn => {
+
+        const rect = btn.getBoundingClientRect();
+
+        if (rect.top < trigger) {
+            btn.classList.add("visible");
+        }
+
+    });
+
+}
+
+window.addEventListener("scroll", showOnScroll);
+
+showOnScroll();
+});
+
+</script>
+
+        
+
+
+        <!-- ===================== FIN DEL BOTON COMPRAR NODO ===================== -->
+
+
+
+
+
+
+
+
+
+
+                <div style="margin-top:100px;">
+                <h2>🔹 Cómo Verificar Ascensum en la Blockchain</h2>
+                <p>
+                Toda la actividad de Ascensum puede comprobarse públicamente en la blockchain de Binance Smart Chain. Cualquier persona puede verificar la información de forma transparente e independiente.<br>
+                <br>                
+                <h3>Contrato Oficial de Ascensum DAO</h3>
+                0x75f16b49403712b17f7072baea7ab725f89f5644
+                <br>
+                <br>
+                <h3>Verificación Manual</h3>
+                1. Ingresa a BscScan.<br>
+                2. Copia el contrato de Ascensum DAO.<br>
+                3. Pégalo en el buscador y presiona Enter.<br>
+                4. Podrás consultar la información pública del contrato directamente en la blockchain.
+                </p>
+                </div>
+
+
+                <p style="margin-top:80px;">
+                Imagen 1</p>
+
+
+
+
+                 <div style="margin-top:40px; margin-bottom:80px;">
+
+    <img src="../imagenes/bscscan_1.png"
+         alt="Como verificar un contrato en bscscan"
+         style="max-width:800px;
+                width:100%;
+                height:auto;
+                display:block;
+                margin:auto;">
+
+                </div>
+
+
+
+
+
+                 <div style="margin-top:80px; margin-bottom:30px;">
+                <h3>Acceso Directo</h3>
+                <p>Si prefieres ahorrar tiempo, puedes utilizar los siguientes accesos directos:
+                <br>
+                <br>
+                📄 Consulta la información pública del contrato oficial.
+                <br>
+                🔍 Observa una transacción registrada directamente en la blockchain (imagen 4).
+                </p>
+                </div>
+
+
+     <div class="btn-group">
+    <a href="https://bscscan.com/address/0x75f16b49403712b17f7072baea7ab725f89f5644"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="btn btn-primary">
+       📄 Ver Contrato de Ascensum en BscScan
+    </a>
+        <br>
+        <br>
+    <a href="https://bscscan.com/tx/0x380606954c7aa22578c1b9e60d458901c5b6fb0c31440ab2b57fa3781dfb3ffd"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="btn btn-success">
+       🔍 Ver una Compra Real de Nodo
+    </a>
+
+</div>
+
+
+
+                <div style="margin-top:80px;">
+                <h2>🔹 ¿Qué hace el Contrato de Ascensum?</h2>
+            
+                
+                <p>
+                Al analizar el contrato en BscScan podremos observar que no funciona como una billetera que acumula fondos.<br>
+                
+                Su función principal es ejecutar automáticamente las reglas programadas del ecosistema.
+                <br>
+                <br>
+
+                Cada vez que se vende un nodo, el contrato recibe los fondos y los distribuye según las proporciones establecidas en su programación.<br>
+                <br>
+                Todas estas operaciones quedan registradas públicamente en la blockchain y pueden ser verificadas por cualquier persona.
+                </p>
+                </div>
+
+
+
+
+                <p style="margin-top:80px;">
+                Imagen 2</p>
+                <div style="margin-top:60px; margin-bottom:80px;">
+
+    <img src="../imagenes/bscscan_2.png"
+         alt="Como verificar un contrato en bscscan"
+         style="max-width:900px;
+                width:100%;
+                height:auto;
+                display:block;
+                margin:auto;">
+
+                </div>
+
+
+                <p>
+                3.- Para comprobar a que billeteras envia el dinero bajamos hasta la seccion Transactions
+                <br>
+                Ahi veremos todas las operaciones de compra de nodos que se hacen minuto a minuto.
+                <br>
+                <br>
+                Todo lo que dice Buy_node es una operacion por compra de Nodo<br>
+                Para comprobar cuales son esas operaciones y adonde envia el dinero el contrato, da click en cualquier Hash que tienes a la izquierda de Buy_node (flecha verde)
+                <br>
+                <br>
+                Para este tutorial tomaremos como ejemplo el primero.<br>
+                Pero puedes abrir cualquier Hash, todos te daran la informacion de como opero el contrato de ascensum en cada operacion de compra de nodo.
+                </p>
+
+
+
+
+
+                <p style="margin-top:80px;">
+                Imagen 3</p>
+                <div style="margin-top:40px; margin-bottom:80px;">
+
+    <img src="../imagenes/bscscan_3.png"
+         alt="Como verificar un contrato en bscscan"
+         style="max-width:900px;
+                width:100%;
+                height:auto;
+                display:block;
+                margin:auto;">
+
+                </div>
+
+
+
+
+                <p>
+                4.- Al abrir el hash veras que el contrato realiza varias operaciones tras la venta de un nodo.
+                <br>
+                <br>
+                En la imagen vemos que la billetera 0x154dF92b.....a6a7b9675 (flecha verde) interactuo con el contrato de Ascensum 0x75F16B49403712b17f7072BAEa7ab725f89f5644 (flecha roja)<br>
+                La operacion fue la compra de un nodo de 25 usdt.<br>
+                Esto puedes verificarlo en la primer operacion dentro del rectangulo rojo.
+                <br>
+                <br>
+                En la segunda operacion vemos que el contrato mino los 5 ASM que le corresponden a esa persona por haber comprado un nodo de 25 usdt.<br> 
+                Esos 5 tokens se los va a entregar dia a dia de forma proporcional a lo largo de 360 dias.
+                <br>
+                <br>
+                En la tercera operacion puedes ver que el contrato tomo el 20% de la compra del nodo (5 usdt) para interactuar con Pancakeswap comprando ASM
+                <br>
+                <br>
+                La cuarta operacion indica que Pancakeswap envia 0.5317 ASM a la billetera del contrato
+                <br>
+                <br>
+                En la ultima operacion de la imagen, vemos que el contrato quema esos 0.5317 token ASM enviandolos a la billetera de muerte (quema) 0x000000000000000000000000000000000000dEaD
+                <br>
+                <br>
+                Esto confirma que con el 20% de la compra de un nodo se compraron tokens ASM en Pancakeswap y se quemaron.
+                </p>
+
+
+
+                <p style="margin-top:80px;">
+                Imagen 4</p>
+
+                <div style="margin-top:40px; margin-bottom:80px;">
+
+    <img src="../imagenes/bscscan_4.png"
+         alt="Como verificar un contrato en bscscan"
+         style="max-width:900px;
+                width:100%;
+                height:auto;
+                display:block;
+                margin:auto;">
+
+                </div>
+
+
+
+
+                <p>
+                En la siguiente imagen vemos que el contrato toma el 20% (en este caso 5.00 usdt) de la venta de cada nodo y lo envia a la billetera del tesoro 0x87Bc4Ae48CDae1127ccF8694F245FF013375cDeb<br>
+                Si das click en la direccion que terminada en cDeb te va a llevar a la direccion de fondos del tesoro para que puedas verificar el balance.
+                <br>
+                <br>
+                En la segunda operacion vemos que el contrato de Ascensum envia el 5% (en este caso 1.25 usdt) del valor de cada nodo que se vende, a la billetera 0x92a3EdBa7d5D151C89F807bAbf93d25A3Ba2d683
+                <br>
+                <br>
+                Esta es la billetera del robot de estabilizacion<br>
+                Si das click en la direccion de la billetera te va a llevar a la direccion de fondos del robot para que puedas verificar el balance.
+                <br>
+                <br>
+                En la tercer operacion el contrato envia el 3% (en este caso 0.75 usdt) de cada nodo a la billetera de Desarrollo de Ascensum 
+                <br>
+                <br>
+                En la ultima operacion el contrato envia el 2% (en este caso 0.50 usdt) de cada nodo y corresponde a Marketing de Ascensum<br>
+                Lo que se destina para desarrollo y marketing es el 5% de cada nodo, es lo que permite continuar ampliando el Ecosistema.
+                </p>
+                
+
+
+                <p style="margin-top:80px;">
+                Imagen 5</p>
+
+                <div style="margin-top:40px; margin-bottom:80px;">
+
+    <img src="../imagenes/bscscan_5.png"
+         alt="Como verificar un contrato en bscscan"
+         style="max-width:900px;
+                width:100%;
+                height:auto;
+                display:block;
+                margin:auto;">
+
+                </div>
+
+
+                <div style="margin-top:80px;">
+                <h2>Distribución para el Vendedor</h2>
+                
+                <p>
+                Por último, podemos observar cómo el contrato utiliza el 50% del valor del nodo para comprar automáticamente tokens CONCILIUM mediante PancakeSwap.
+                <br>
+                <br>
+
+                <b>En este ejemplo:</b><br>
+
+                ✅ El contrato tomó 12,50 USDT (50% del valor del nodo).<br>
+
+                ✅ Ejecutó una compra automática en PancakeSwap.<br>
+
+                ✅ Obtuvo 39,3867 tokens CONCILIUM.<br>
+
+                ✅ Envió esos tokens directamente a la billetera del vendedor.<br>
+                <br>
+
+                Aunque durante el proceso aparecen varias operaciones internas propias del intercambio descentralizado, el resultado final puede verificarse fácilmente en la blockchain: el contrato utiliza el 50% del valor del nodo para adquirir CONCILIUM y los transfiere a la siguiente billetera 0x3BBB0038....67796cC9b que pertenece a la persona que vendio ese Nodo.
+                </p>
+                </div>
+
+                   
+
+
+
+                   <div style="margin-top:40px; margin-bottom:40px;">
+
+    <img src="../imagenes/bscscan_6.png"
+         alt="Como verificar un contrato en bscscan"
+         style="max-width:900px;
+                width:100%;
+                height:auto;
+                display:block;
+                margin:auto;">
+
+                </div>
+
+
+
+                    <p>
+                    Para finalizar has podido comprobar que el contrato inteligente de Ascensum cumplio con cada una de las tareas programadas.<br>
+                    Tomo el 100% del valor de un nodo y repartio absolutamente todo de la siguiente manera:
+                    </p>
+                    
+
+
+
+                
+
+
+                   <div style="
+            background: linear-gradient(145deg,#0f0f0f,#1a1a1a);
+            color:#ffffff;
+            padding:24px;
+            border-radius:16px;
+            font-family:Arial, sans-serif;
+            font-size:clamp(15px,2vw,18px);
+            line-height:1.8;
+            width:100%;
+            max-width:480px;
+            margin:auto;
+            box-sizing:border-box;
+            box-shadow:0 0 25px rgba(0,255,120,0.15);
+            border:1px solid rgba(0,255,120,0.15);
+            ">
+
+            <div style="
+            text-align:center;
+            font-size:26px;
+            font-weight:bold;
+            color:#00ff99;
+            margin-bottom:24px;
+            letter-spacing:0.5px;
+            ">
+            
+            </div>
+
+            <div style="margin-bottom:18px;">✅ 20% Compra ASM en Pancakeswap y los quema</div>
+
+            <div style="margin-bottom:18px;">✅ 20% Para el tesoro</div>
+
+            <div style="margin-bottom:18px;">✅ 5% Para el Robot de estabilizacion</div>
+
+            <div style="margin-bottom:18px;">✅ 5% Para Desarrollo y Marketing</div>
+
+            <div style="margin-bottom:18px;">✅ 50% Para el vendedor</div>
+
+            </div>
+
+            
+           
+
+   
+             
+
+
+
+
+               
+
+
+
+                <div style="margin-top:80px;">
+                <h2>Te he entregado un conocimiento que sirve para cualquier proyecto</h2>
+                
+                <p>
+                Aunque en esta guía utilizamos ASM y Ascensum como ejemplos prácticos, los conceptos y herramientas que acabas de aprender pueden utilizarse para analizar cualquier proyecto desarrollado sobre blockchain.
+                <br>
+                <br>
+                Aprender a consultar contratos, auditorías, liquidez y transacciones públicas permite tomar decisiones más informadas y reducir muchos de los riesgos habituales del ecosistema cripto.
+                <br>
+                <br>
+                El objetivo de esta guía es enseñar a que cualquier persona pueda verificar por sí misma la información registrada en la blockchain.
+                </p>
+                </div>
+
+
+
+
+                <!-- ===================== COMIENZA LINEA ===================== -->
+
+                <hr style="margin-top:40px; margin-bottom:60px;">
+
+                <!-- ===================== TERMINA LINEA ===================== -->
+
+                
+
+                 <h2 style="text-align:center; line-height:1.5;"> 🔹 Conclusión 🔹</h2> 
+
+
+                <p style="text-align:center; font-size:18px; line-height:1.8; max-width:950px; margin:auto;">
+                “No pedimos confianza ciega<br>
+                 Te enseñamos a verificar”
+                </p>
+                
+                
+
+
+
+            <div style="margin-bottom:10px;">
+                <h2>Estás a una decisión de cambiar tu posición en el mundo cripto</h2>
+                </div>
+                
+
+                <p style="text-align:center; font-size:18px; line-height:1.8; max-width:950px; margin:auto;">
+
+
+                <br>
+                ¿Estás listo para dar el siguiente paso?<br>
+                 Haz click abajo y asegura tu Nodo ahora.<br>
+                </p>
+                
+                
+
+
+
+
+
+<!-- ===================================================== -->
+<!-- ========== COMIENZA BOTÓN COMPRAR NODO ============== -->
+<!-- ===================================================== -->
+
+<!--
+PERSONALIZACIÓN RÁPIDA
+
+CAMBIAR POSICIÓN:
+center = centro
+left = izquierda
+right = derecha
+
+CAMBIAR COLOR:
+Busca:
+background: linear-gradient(...)
+
+CAMBIAR TAMAÑO:
+padding: 16px 30px;
+font-size: 18px;
+
+CAMBIAR TEXTO:
+Quiero vender Nodos Ascensum
+
+CAMBIAR LINK:
+Reemplazar TU_LINK_AQUI
+
+-->
+
+
+<!-- CONTENEDOR DEL BOTÓN -->
+<div class="cta-container">
+
+
+    <!-- BOTÓN -->
+    <a target="_blank"
+   rel="noopener noreferrer"
+   class="cta-pro asm-link-comprar">
+
+
+        <!-- TEXTO DEL BOTÓN -->
+        <span>Quiero comprar mi primer Nodo y comenzar</span>
+
+        <!-- FLECHA -->
+        <svg class="arrow" width="20" height="20" viewBox="0 0 24 24">
+            <path d="M5 12h14M13 5l7 7-7 7"
+                  stroke="white"
+                  stroke-width="2"
+                  fill="none"/>
+        </svg>
+
+    </a>
+
+</div>
+
+<style>
+
+/* ===================================================== */
+/* ================= POSICIÓN BOTÓN ==================== */
+/* ===================================================== */
+
+.cta-container {
+
+    /* CAMBIAR:
+       center = centro
+       left = izquierda
+       right = derecha
+    */
+
+    text-align: center;
+
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+/* ===================================================== */
+/* ==================== BOTÓN ========================== */
+/* ===================================================== */
+
+.cta-pro {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    /* TAMAÑO BOTÓN */
+    padding: 16px 30px;
+
+    /* TAMAÑO TEXTO */
+    font-size: 18px;
+
+    font-weight: 600;
+    color: #121211;
+
+    /* COLOR BOTÓN */
+    background: linear-gradient(135deg, #00c853, #00e676);
+
+    border-radius: 14px;
+    text-decoration: none;
+
+    /* SOMBRA */
+    box-shadow: 0 10px 25px rgba(0, 200, 83, 0.35);
+
+    transition: all 0.3s ease;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    animation: pulse 2.5s infinite;
+}
+
+/* ===================================================== */
+/* ===================== HOVER ========================= */
+/* ===================================================== */
+
+.cta-pro:hover {
+
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow: 0 15px 35px rgba(0, 200, 83, 0.6);
+}
+
+/* ===================================================== */
+/* ===================== CLICK ========================= */
+/* ===================================================== */
+
+.cta-pro:active {
+    transform: scale(0.96);
+}
+
+/* ===================================================== */
+/* ================= FLECHA ANIMADA ==================== */
+/* ===================================================== */
+
+.cta-pro .arrow {
+    transition: transform 0.3s ease;
+}
+
+.cta-pro:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* ===================================================== */
+/* ================= EFECTO PULSE ====================== */
+/* ===================================================== */
+
+@keyframes pulse {
+
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(0, 200, 83, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0);
+    }
+}
+
+/* ===================================================== */
+/* ============== APARECER CON SCROLL ================= */
+/* ===================================================== */
+
+.cta-pro.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+</style>
+
+<script>
+
+/* ===================================================== */
+/* ========= MOSTRAR BOTÓN AL HACER SCROLL ============ */
+/* ===================================================== */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+const botones = document.querySelectorAll(".cta-pro");
+
+function showOnScroll() {
+
+    const trigger = window.innerHeight * 0.8;
+
+    botones.forEach(btn => {
+
+        const rect = btn.getBoundingClientRect();
+
+        if (rect.top < trigger) {
+            btn.classList.add("visible");
+        }
+
+    });
+
+}
+
+window.addEventListener("scroll", showOnScroll);
+
+showOnScroll();
+});
+
+</script>
+
+        
+
+
+        <!-- ===================== FIN DEL BOTON COMPRAR NODO ===================== -->
+
+
+
+
+
+
+
+
+
+
+        <!-- ===================== COMIENZA LINEA ===================== -->
+
+        <hr style="margin-top:60px; margin-bottom:40px;">
+
+        <!-- ===================== TERMINA LINEA ===================== -->
+
+
+
+
+        <div style="margin-bottom:50px;">
+        <h1>Ascensum DAO</h1>
+        <h3>Explora la Seguridad y todo su Potencial</h3>
+     
+        <p>
+        En este video descubrirás qué hace diferente a Ascensum DAO y por qué está despertando el interés de muchas personas dentro del mundo cripto.
+        <br>
+        <br>
+        Analizaremos su seguridad, su modelo de funcionamiento, sus ventajas y los fundamentos que podrían impulsar su crecimiento transformando ASM en la moneda viral del 2026
+        <br>
+        <br>
+        Si alguna vez te preguntaste qué es ASM y por qué no se parece a la mayoría de las criptomonedas del mercado, aquí encontrarás las respuestas.
+        <br>
+        <br>
+        Infórmate, verifica los datos por ti mismo y descubre el potencial que muchos ven en este proyecto.
+        </p>
+        </div>
+       
+   
+
+
+
+
+        <!-- ===================== VIDEO RESPONSIVE ===================== -->
+
+
+     <div class="video-box"
+     data-video="O-ujDzec-bc"         
+     style="position:relative;max-width:800px;margin:auto;cursor:pointer;"
+     onclick="loadVideo(this)">
+
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+
+    <!-- Miniatura -->
+    <img src="https://img.youtube.com/vi/O-ujDzec-bc/hqdefault.jpg"    
+         style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+
+    <!-- Botón Play -->
+    <div class="play-button"></div>
+
+  </div>
+
+</div>
+
+
+
+<style>
+.play-button {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:80px;
+  height:80px;
+  background:rgba(0,0,0,0.6);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:videopulse 1.5s infinite;
+}
+
+.play-button::before {
+  content:'';
+  width:0;
+  height:0;
+  border-left:25px solid white;
+  border-top:15px solid transparent;
+  border-bottom:15px solid transparent;
+}
+
+@keyframes videopulse {
+  0% { transform:translate(-50%,-50%) scale(1); }
+  50% { transform:translate(-50%,-50%) scale(1.1); }
+  100% { transform:translate(-50%,-50%) scale(1); }
+}
+
+/* Fade-in */
+.fade-in {
+  opacity:0;
+  transition:opacity 0.8s ease;
+}
+
+.fade-in.show {
+  opacity:1;
+}
+
+
+</style>
+
+
+
+<script>
+function loadVideo(el) {
+
+  const videoId = el.getAttribute("data-video");
+
+  el.innerHTML = `
+   <div style="position:relative;padding-bottom:56.25%;height:0;">
+
+  <iframe
+    class="ytvideo fade-in"
+    src="https://www.youtube.com/embed/${videoId}?controls=1&rel=0&playsinline=1"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+
+</div>
+  `;
+
+  setTimeout(() => {
+    el.querySelector(".ytvideo").classList.add("show");
+  }, 100);
+}
+</script>
+
+
+
+        
+
+
+         <!-- ===================== FIN DEL VIDEO RESPONSIVE ===================== -->
+
+
+
+        <!-- ===================== COMIENZA LINEA ===================== -->
+
+        <hr style="margin-top:80px; margin-bottom:60px;">
+
+        <!-- ===================== TERMINA LINEA ===================== -->
+
+
+
+                 <!---------  COMIENZA PORTAL ASCENSUM  --------->
+
+<a href="academia.html"
+   target="_blank"
+   class="ascensum-portal">
+
+    <div class="portal-icon">🚀</div>
+
+    <div class="portal-title">
+        QUIERES CONOCER MAS!!!
+    </div>
+
+    <div class="portal-subtitle">
+        Auditorias • Estadísticas • Seguridad • Tesoro
+    </div>
+
+    <div class="portal-enter">
+        ACCEDER AHORA →
+    </div>
+
+</a>
+
+<style>
+
+.ascensum-portal{
+    display:block;
+    max-width:700px;
+    margin:40px auto;
+    padding:35px;
+    text-align:center;
+    text-decoration:none;
+
+    background:linear-gradient(
+        135deg,
+        #10131c,
+        #1a1f2e
+    );
+
+    border:3px solid #f7b500;
+    border-radius:20px;
+
+    box-shadow:
+        0 0 25px rgba(247,181,0,.60),
+        0 0 70px rgba(247,181,0,.35),
+        0 0 100px rgba(247,181,0,.15);
+
+    transition:all .35s ease;
+}
+
+.ascensum-portal:hover{
+    transform:translateY(-5px) scale(1.02);
+
+    box-shadow:
+        0 0 40px rgba(247,181,0,.90),
+    0 0 90px rgba(247,181,0,.50),
+    0 0 140px rgba(247,181,0,.25);
+}
+
+.portal-icon{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.portal-title{
+    color:#ffffff;
+    font-size:30px;
+    font-weight:800;
+    letter-spacing:1px;
+    margin-bottom:15px;
+}
+
+.portal-subtitle{
+    color:#d8d8d8;
+    font-size:16px;
+    margin-bottom:25px;
+}
+
+.portal-enter{
+    display:inline-block;
+    padding:12px 28px;
+
+    background:#f7b500;
+    color:#111111;
+
+    font-size:18px;
+    font-weight:700;
+
+    border-radius:50px;
+
+    transition:all .3s ease;
+}
+
+.ascensum-portal:hover .portal-enter{
+    transform:scale(1.08);
+}
+
+</style>
+
+
+
+                     <!--------- FIN PORTAL ASCENSUM --------->
+
+
+
+
+
+
+
+
+            <div style="margin-bottom:80px;"></div>
+            </main>
+
+    
+
+    <!-- PIE DE PÁGINA -->
+    <section>
+        <div class="footer-top-green"></div>
+        <div class="footer-black">
+            <div class="left">© Copyright 2026 - All Rights Reserved - Criptovision Marketing Global Ecom</div>
+            <div class="right">
+        <a href="#" target="_blank" rel="noopener noreferrer" class="asm-link-telegram">Telegram</a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="asm-link-whatsapp">Whatsapp</a>
+                
+            </div>
+        </div>
+        <div class="footer-bottom-green"></div>
+    </section>
+
+
+
+
+    <!-- JS SCROLL EFECTO -->
+    <script>
+        window.addEventListener("scroll", function() {
+      const nav = document.querySelector(".nav-bar");
+      if (window.scrollY > 50) nav.classList.add("scrolled");
+      else nav.classList.remove("scrolled");
+    });
+    </script>
+
+
+
+
+    <!-- FUEGOS ARTIFICIALES (sin causar overflow) -->
+    
+
+    <script>
+        const fwColors = ['gold', 'white', '#ffd700', '#ffa500'];
+    function createFirework() {
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight * 0.4;
+      const particleCount = 30 + Math.floor(Math.random() * 40);
+
+      for (let i = 0; i < particleCount; i++) {
+        const p = document.createElement('div');
+        p.classList.add('firework-star');
+        p.style.left = `${x}px`;
+        p.style.top = `${y}px`;
+        const color = fwColors[Math.floor(Math.random() * fwColors.length)];
+        p.style.backgroundColor = color;
+        p.style.boxShadow = `0 0 15px ${color}, 0 0 30px ${color}`;
+        document.body.appendChild(p);
+
+        const angle = Math.random() * 2 * Math.PI;
+        const radius = 120 + Math.random() * 100;
+        const duration = 1500 + Math.random() * 1200;
+
+        setTimeout(() => {
+          p.style.transition = `transform ${duration}ms ease-out, opacity ${duration}ms ease-out`;
+          const dx = radius * Math.cos(angle);
+          const dy = radius * Math.sin(angle);
+          p.style.transform = `translate(${dx}px, ${dy}px) scale(0)`;
+          p.style.opacity = 0;
+        }, 50);
+
+        setTimeout(() => p.remove(), duration + 120);
+      }
+    }
+    setInterval(createFirework, 10000 + Math.random() * 6000);
+    </script>
+
+
+
+
+    <script src="../sistema/CONFIG.js"></script>
+    <script src="../sistema/02-ENLACES.js"></script>
+    <script src="../sistema/04-FUEGOS.js"></script>
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
