@@ -70,6 +70,8 @@ async function cargarConfiguracion() {
 
         console.log("✅ Configuración cargada.");
 
+        inicializarEnlaces();
+
     } catch (error) {
 
         console.error(error);
