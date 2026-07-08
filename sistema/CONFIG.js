@@ -18,7 +18,12 @@ async function cargarConfiguracion() {
 
     try {
 
-        const respuesta = await fetch("/asm/bbc/config.json");
+
+        console.log("Página:", location.href);
+        console.log("Config:", new URL("config.json", location.href).href);
+
+        const respuesta = await fetch("config.json");
+
 
         if (!respuesta.ok) {
             throw new Error("No se pudo cargar config.json");
