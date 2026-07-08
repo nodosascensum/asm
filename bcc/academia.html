@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academia Ascensum</title>
+  <link rel="icon" type="image/png" href="../imagenes/pets_universe.png"> <!-- Favicon -->
+
+  <style>
+    /* ===================== ESTILO GENERAL ===================== */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ===================== ENCABEZADO ===================== */
+    .top-bar {
+      position: relative;
+      height: 40px;
+      /* Altura de la franja verde */
+    }
+
+    /* Franja verde detrás de la barra negra */
+    .green-bar {
+      background-color: #3a8308;
+      height: 110px;
+      width: 100%;
+    }
+
+    /* Barra negra centrada y fija al top */
+    .nav-bar {
+      position: fixed;
+      /* Barra negra fija */
+      top: 0;
+      /* Pegada al margen superior */
+      left: 50%;
+      /* Para centrar horizontalmente */
+      transform: translateX(-50%);
+      background-color: #000;
+      border-radius: 25px;
+      width: 95%;
+      max-width: 1200px;
+      min-height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-sizing: border-box;
+      z-index: 999;
+      /* Para que quede encima de la franja verde */
+      transition: all 0.4s ease;
+      /* Mejora scroll */
+    }
+
+    /* Cuando hacemos scroll la barra se achica un poquito */
+    .nav-bar.scrolled {
+      min-height: 80px;
+      /* un poco más baja */
+      background-color: rgba(0, 0, 0, 0.95);
+      /* efecto sutil de transparencia */
+    }
+
+    /* Logo y texto al lado */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    /* Logo */
+    .logo img {
+      max-height: 60px;
+      width: auto;
+      transition: max-height 0.3s ease;
+      /* Mejora scroll */
+    }
+
+    .nav-bar.scrolled .logo img {
+      max-height: 50px;
+      /* achica el logo al bajar */
+    }
+
+    /* Texto al lado del logo */
+    .logo-text {
+      color: yellow;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: font-size 0.3s ease;
+      /* Mejora scroll */
+    }
+
+    .logo-text:hover {
+      color: #a8e6a3;
+    }
+
+    .nav-bar.scrolled .logo-text {
+      font-size: 1.1rem;
+      /* texto un poquito más delicado al bajar */
+    }
+
+    /* Contenedor de links a la derecha */
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: yellow;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #a8e6a3;
+    }
+
+    /* ===================== CONTENIDO PRINCIPAL ===================== */
+    main {
+      padding: 20px;
+      margin: 0 auto;
+      max-width: 900px;
+      line-height: 1.2;
+      font-size: 18px;
+      margin-top: 120px;
+      /* Para que el contenido no quede oculto detrás de la barra negra */
+    }
+
+    main a {
+      color: red;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    main a:hover {
+      color: #3a8308;
+    }
+
+    /* Estilos para títulos */
+    h1 {
+      font-family: Arial, sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      font-size: 2em;
+    }
+
+    h2 {
+      font-family: Arial, sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      font-size: 1.6em;
+    }
+
+    h3 {
+      font-family: Arial, sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      margin-bottom: 8px;
+      font-size: 1.3em;
+    }
+
+    /* ===================== VIDEO RESPONSIVE ===================== */
+    .video-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .video-container iframe {
+      width: 70%;
+      max-width: 800px;
+      height: auto;
+      aspect-ratio: 16/9;
+    }
+
+    /* ===================== PIE DE PÁGINA ===================== */ 
+    .footer-top-green {
+      background-color: #3a8308;
+      height: 20px;
+      width: 100%;
+    }
+
+    .footer-black {
+      background-color: #000;
+      height: 95px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      box-sizing: border-box;
+      flex-wrap: wrap;
+    }
+
+    .footer-black div {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-black .left {
+      color: yellow;
+      font-size: 18px;
+    }
+
+    .footer-black .right {
+      text-align: right;
+    }
+
+    .footer-black .right a {
+      color: yellow;
+      margin-left: 15px;
+      text-decoration: none;
+    }
+
+    .footer-black .right a:hover {
+      color: #a8e6a3;
+    }
+
+    .footer-bottom-green {
+      background-color: #3a8308;
+      height: 25px;
+      width: 100%;
+    }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 768px) {
+
+  .nav-bar {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .video-container iframe {
+    width: 100%;
+  }
+
+  .logo-text {
+    font-size: 0.75rem;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+  }
+
+}
+
+
+/* Ocultar barras en celular horizontal */
+@media screen and (max-width:1000px) and (orientation:landscape) {
+
+    .nav-bar,
+    .green-bar {
+        display:none !important;
+    }
+
+}
+
+/* Ajustar tamaño del video en celular horizontal */
+@media screen and (max-width:1000px) and (orientation:landscape) {
+
+    .video-container {
+        width:80% !important;
+        margin:0 auto !important;
+        padding-bottom:45% !important;
+    }
+
+}
+
+ /* Diagnóstico del tamaño real del video en celular vertical */
+@media screen and (max-width:768px) and (orientation:portrait) {
+
+    .academy-section {
+        padding-left:0 !important;
+        padding-right:0 !important;
+    }
+
+}
+
+  </style>
+</head>
+
+<body>
+
+ 
+   <!-- ===================== ENCABEZADO ===================== -->
+  <div class="top-bar">
+    <div class="green-bar"></div>
+    <div class="nav-bar">
+      <div class="logo-container">
+
+        <a href="index.html" class="logo">
+          <img src="../imagenes/Pets_Concilium.png" alt="Logo Concilium">
+        </a>
+
+
+
+        <a href="index.html" target="_blank" class="logo-text">Criptovision Marketing Global Ecom</a>
+
+      </div>
+      <div class="nav-links">
+        
+
+        <a href="#" target="_blank" class="asm-link-whatsapp">Contacto</a>
+        <a href="index.html" target="_blank">Ascensum Dao</a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- ===================== CONTENIDO PRINCIPAL ===================== -->
+  
+  <main>
+
+
+          <!-- ================= COMIENZA ACADEMIA ===================== -->
+<section class="academy-section">
+
+    <h2>🎓 Academia Ascensum</h2>
+
+    <div class="video-container">
+        <iframe
+            id="videoPlayer"
+            src="https://www.youtube.com/embed/9RaAR25UCbg?rel=0"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <div class="video-info">
+        <h3 id="videoTitle">Academia Ascensum DAO</h3>
+        <p id="videoDescription">
+            Explora los temas disponibles y accede a los videos paso a paso para aprender a utilizar el ecosistema Ascensum DAO.
+        </p>
+    </div>
+
+<div class="playlist">
+
+
+    
+    <!-- Comienza Boton Comunidad  -->
+
+
+
+    <button class="category-btn">
+        👥 Comunidad
+    </button>
+
+    <div class="category-content">
+
+        <button class="video-btn"
+            data-video="9RaAR25UCbg"
+            data-title="El mundo esta cambiando"
+            data-description="No es solo un nuevo proyecto… es tu oportunidad de oro
+            para entrar desde el inicio en algo que sí o sí se hará viral.">
+
+            ▶ Ascensum Dao
+
+        </button>
+
+
+        <button class="video-btn"
+            data-video="1KwgySuDgf8"
+            data-title="Revoluciona tus Finanzas"
+            data-description="Imagina tener un sistema dentro de Ascensum Dao que pone tu dinero a trabajar las 24 horas del dia los 7 dias de la semana, generando ingresos pasivos de forma automatica">
+
+            ▶ Revoluciona tus Finanzas
+
+        </button>
+
+
+        <button class="video-btn"
+            data-video="TQ-xkEWqDrg"
+            data-title="Que es Ascensum Dao"
+            data-description="La primera organización autónoma descentralizada. Diseñado para inversores, criptoemprendedores,networkers,influencers y vendedores online en un solo ecosistema.">
+
+            ▶ Que es Ascensum Dao
+
+        </button>
+
+    </div>
+
+
+
+      <!-- Termina Boton Comunidad  -->
+
+      <!-- Comienza Boton PRIMEROS PASOS -->
+
+
+
+
+    <button class="category-btn">
+        📚 Primeros Pasos
+    </button>
+
+<!-- Termina Boton Categoria PRIMEROS PASOS -->
+
+<!-- Comienza Boton Crear Wallet -->
+
+    <div class="category-content">
+
+        <button class="video-btn"
+            data-video="ZXohKFlgtb0"
+            data-title="Como descargar la billetera Safepal"
+            data-description="Aprende a instalar la billetera Safepal.">
+
+            ▶ Como descargar la billetera Safepal
+
+        </button>
+
+<!-- Termina Boton Crear Wallet -->
+
+<!-- Comienza Boton Comprar Ascensum -->
+
+        <button class="video-btn"
+            data-video="-bqrjzM7b0A"
+            data-title="Como agregar las monedas a Safepal"
+            data-description="En este video aprenderas a agregar las monedas ASM, usdt (bep-20) y Concilium a la billetera Safepal.">
+
+            ▶ Como agregar las monedas a Safepal 
+
+        </button>
+        </div>
+
+
+
+<!-- Termina Boton Primeros Pasos  -->
+
+        <!-- Comienza Boton Nodos  -->
+
+
+
+    
+    <button class="category-btn">
+        ⚙️ Nodos
+    </button>
+
+    <div class="category-content">
+
+            <button class="video-btn"
+            data-video="J3U7oOaBnTE"
+            data-title="¿Que es un Nodo?"
+            data-description=" ¿Sabías que el verdadero poder de la blockchain no está en los tokens… sino en los nodos?
+            Detrás de cada transacción segura, cada activo descentralizado y cada decisión colectiva en una DAO, hay una red silenciosa de nodos trabajando 24/7 para garantizar transparencia, inmutabilidad y libertad financiera.">
+
+            ▶ Que es un Nodo
+
+        </button>
+
+
+        <button class="video-btn"
+            data-video="yVOYSArBEQA"
+            data-title="Cómo comprar Nodos Ascensum"
+            data-description="Aqui te explicamos la forma correcta para que puedas comprar tus nodos Ascensum.">
+
+            ▶ Como comprar Nodos Ascensum
+
+        </button>
+
+        <button class="video-btn"
+            data-video="Aw9N8YiVq9I"
+            data-title="Conociendo el Backoffice de Ascensum"
+            data-description="En este video te mostraremos diferentes datos para que puedas conocer como funciona el sistema de Ascensum Dao">
+
+            ▶ Conociendo el Backoffice
+
+        </button>
+
+    </div>
+
+
+
+        <!-- Termina Boton Nodos  -->
+
+         <!-- Comienza Boton Tesoro  -->
+
+         
+    
+    <button class="category-btn">
+        💎 Que es el Tesoro de Ascensum DAO
+    </button>
+
+    <div class="category-content">
+
+            <button class="video-btn"
+            data-video="b2vQJcVjHw8"
+            data-title="El Tesoro de Ascensum DAO"
+            data-description="El tesoro es mucho mas que un fondo: es una puerta directa a un sistema de inversion descentralizado, seguro y totalmente transparente, donde cada comprador de un nodo tiene voz y voto gracias a nuestra gobernanza comunitaria.">
+
+            ▶ El Tesoro de Ascensum DAO
+
+        </button>
+        </div>
+
+
+
+        <!-- Termina Boton Tesoro  -->
+
+        <!-- Comienza Boton SEGURIDAD  -->
+
+
+
+    
+    <button class="category-btn">
+        🛡️ Seguridad y Auditoría
+    </button>
+
+    <div class="category-content">
+
+                <button class="video-btn"
+            data-video="jhf5A7InCd8"
+            data-title="ASM un Protocolo Increible"
+            data-description="Rentabilidad y valor real en el mercado, no es un protocolo cualquiera, es poder real en la Blockchain">
+
+            ▶ ASM un Protocolo Increible 
+
+        </button>
+
+
+                <!-- Comienza Boton Auditoria -->
+
+        <button class="video-btn"
+            data-video="v_0p6m2KLRM"
+            data-title="Verificacion de Seguridad del Protocolo ASM"
+            data-description="En este video tienes una guia paso a paso para que puedas comprobar que toda la información es pública y que puedes analizarla por ti mismo en la Blockchain.">
+
+            ▶ Verificacion de Seguridad del Protocolo ASM 
+
+        </button>
+        
+                <!-- Termina Boton Auditoria  -->
+
+
+                <button class="video-btn"
+            data-video="O-ujDzec-bc"
+            data-title="Seguridad y Auditoria de Ascensum"
+            data-description="En este video descubrirás qué hace diferente a Ascensum DAO. Analizaremos su seguridad, su modelo de funcionamiento, sus ventajas y los fundamentos que podrían impulsar su crecimiento transformando ASM en la moneda viral del 2026">
+
+            ▶ Analicemos la Seguridad y Auditoria 
+
+        </button>
+        </div>
+
+        
+
+
+        <!-- TERMINA Boton SEGURIDAD  -->
+
+         <!-- Comienza Boton TESTIMONIOS  -->
+
+
+
+
+       <!-- PRIMEROS PASOS 2-->
+    <button class="category-btn">
+        🗣️ Lo que dicen los usuarios
+    </button>
+
+    <div class="category-content">
+
+        <button class="video-btn"
+            data-video="dOf8U8s3wBQ"
+            data-title="Maximo Perlippe"
+            data-description="Conoce sus resultados en Ascensum Dao a partir de sus comienzos con 3 nodos.">
+
+            ▶ Maximo Perlippe
+
+        </button>
+
+        <button class="video-btn"
+            data-video="GQ6fkUF63Tg"
+            data-title="Celina"
+            data-description="Celina nos comenta que ingreso al mundo de las criptomonedas en noviembre del 25 y cual fue su crecimiento a nivel personal, financiero y de experiencia.">
+
+            ▶ Celina
+
+        </button>
+
+    </div>
+
+
+
+
+      <!-- Termina Boton Testimonios  -->
+
+      <!-- Comienza Boton Promociones  -->
+
+
+
+
+    <button class="category-btn">
+        🎁 Promociones
+    </button>
+
+    <div class="category-content">
+
+        <button class="video-btn"
+            data-video="0mf-E9PUBBs"
+            data-title="Santa Marta - Colombia"
+            data-description="Puedes ganarte este increible viaje todo pago cumpliendo el Reto 5x5. Nos vemos en Santa Marta, Colombia.">
+
+            ▶ Santa Marta - Colombia
+
+        </button>
+    </div>
+
+
+
+        <!-- TERMINA Boton PROMOCIONES  -->
+
+
+
+
+        <!-- Aquí agregarás nuevos videos -->
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<style>
+
+.academy-section{
+    max-width:1000px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+.academy-section h2{
+    text-align:center;
+    margin-bottom:30px;
+    font-size:40px;
+    font-weight:bold;
+    color:#162447;
+    animation: brillo 2.5s infinite alternate;
+}
+
+@keyframes brillo {
+
+    from{
+        text-shadow: 
+            0 0 5px #00d4ff;
+    }
+
+    to{
+        text-shadow:
+            0 0 15px #00d4ff,
+            0 0 25px #00d4ff;
+    }
+}
+
+.video-container{
+    position:relative;
+    width:100%;
+    padding-bottom:56.25%;
+    overflow:hidden;
+    border-radius:12px;
+}
+
+.video-container iframe{
+    position:absolute;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    border:none;
+}
+
+.video-info{
+    margin-top:25px;
+    text-align:center;
+}
+
+.video-info h3{
+    margin-bottom:10px;
+}
+
+.playlist{
+    margin-top:40px;
+}
+
+.video-btn{
+    width:100%;
+    text-align:left;
+    padding:18px;
+    margin-bottom:10px;
+    border:none;
+    cursor:pointer;
+    font-size:16px;
+    border-radius:8px;
+    transition:all .3s ease;
+}
+
+.video-btn:hover{
+    transform:translateX(5px);
+}
+
+
+.category-btn{
+    width:100%;
+    text-align:left;
+    padding:18px;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.category-btn.active{
+    background:#162447;
+    color:#ffffff;
+    border-left:5px solid #00d4ff;
+    transform:translateX(5px);
+    transition:all .3s ease;
+}
+
+
+.category-btn.active{
+    background:#162447;
+    color:#ffffff;
+    border-left:5px solid #00d4ff;
+    transform:translateX(5px);
+    transition:all .3s ease;
+}
+
+.category-content{
+    display:none;
+    padding:10px 0;
+}
+
+.video-btn.active{
+
+    background:#6366F1;
+
+    color:#ffffff;
+
+    border-left:5px solid #00d4ff;
+
+    transform:translateX(5px);
+
+    font-weight:bold;
+
+}
+      </style>
+
+
+            <script>
+
+const player = document.getElementById("videoPlayer");
+const title = document.getElementById("videoTitle");
+const description = document.getElementById("videoDescription");
+
+const buttons = document.querySelectorAll(".video-btn");
+
+buttons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        buttons.forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        player.src =
+            "https://www.youtube.com/embed/" +
+            button.dataset.video +
+            "?rel=0";
+
+        title.textContent =
+            button.dataset.title;
+
+        description.textContent =
+            button.dataset.description;
+
+        const video =
+document.querySelector(".video-container");
+
+
+      let offset = 120;
+
+// Si es celular en horizontal
+if (window.innerWidth <= 1000 &&
+    window.innerWidth > window.innerHeight) {
+
+    offset = 0;
+}
+
+window.scrollTo({
+    top: video.offsetTop - offset,
+    behavior: "smooth"
+});
+
+    });
+
+});
+
+const categoryButtons =
+document.querySelectorAll(".category-btn");
+
+categoryButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const content = button.nextElementSibling;
+        const isOpen = content.style.display === "block";
+
+        document
+        .querySelectorAll(".category-content")
+        .forEach(item => {
+            item.style.display = "none";
+        });
+
+        categoryButtons.forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        if (!isOpen) {
+            content.style.display = "block";
+            button.classList.add("active");
+        }
+
+    });
+
+});
+
+</script>
+
+
+
+
+
+
+
+            <!-- ================= FIN ACADEMIA ===================== -->
+
+
+
+
+
+
+
+
+                     <div style="margin-top:60px;">
+                <h2>Estás a una decisión de cambiar tu posición en el mundo cripto</h2>
+
+                </div>
+                
+                
+
+                <p style="text-align:center; font-size:18px; line-height:1.8; max-width:950px; margin:auto;">
+
+
+                <br>
+                ¿Estás listo para dar el siguiente paso?<br>
+                 Haz click abajo y asegura tu Nodo ahora.<br>
+                </p>
+
+                
+
+
+                
+
+                <!-- ===================================================== -->
+<!-- ========== COMIENZA BOTÓN COMPRAR NODO ============== -->
+<!-- ===================================================== -->
+
+<!--
+PERSONALIZACIÓN RÁPIDA
+
+CAMBIAR POSICIÓN:
+center = centro
+left = izquierda
+right = derecha
+
+CAMBIAR COLOR:
+Busca:
+background: linear-gradient(...)
+
+CAMBIAR TAMAÑO:
+padding: 16px 30px;
+font-size: 18px;
+
+CAMBIAR TEXTO:
+Quiero vender Nodos Ascensum
+
+CAMBIAR LINK:
+Reemplazar TU_LINK_AQUI
+
+-->
+
+
+<!-- CONTENEDOR DEL BOTÓN -->
+<div class="cta-container">
+
+
+    <!-- BOTÓN -->
+    <a target="_blank"
+   rel="noopener noreferrer"
+   class="cta-pro asm-link-comprar">
+
+
+        <!-- TEXTO DEL BOTÓN -->
+        <span>Quiero comprar mi primer Nodo y comenzar</span>
+
+        <!-- FLECHA -->
+        <svg class="arrow" width="20" height="20" viewBox="0 0 24 24">
+            <path d="M5 12h14M13 5l7 7-7 7"
+                  stroke="white"
+                  stroke-width="2"
+                  fill="none"/>
+        </svg>
+
+    </a>
+
+</div>
+
+<style>
+
+/* ===================================================== */
+/* ================= POSICIÓN BOTÓN ==================== */
+/* ===================================================== */
+
+.cta-container {
+
+    /* CAMBIAR:
+       center = centro
+       left = izquierda
+       right = derecha
+    */
+
+    text-align: center;
+
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+/* ===================================================== */
+/* ==================== BOTÓN ========================== */
+/* ===================================================== */
+
+.cta-pro {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    /* TAMAÑO BOTÓN */
+    padding: 16px 30px;
+
+    /* TAMAÑO TEXTO */
+    font-size: 18px;
+
+    font-weight: 600;
+    color: #121211;
+
+    /* COLOR BOTÓN */
+    background: linear-gradient(135deg, #00c853, #00e676);
+
+    border-radius: 14px;
+    text-decoration: none;
+
+    /* SOMBRA */
+    box-shadow: 0 10px 25px rgba(0, 200, 83, 0.35);
+
+    transition: all 0.3s ease;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    animation: pulse 2.5s infinite;
+}
+
+/* ===================================================== */
+/* ===================== HOVER ========================= */
+/* ===================================================== */
+
+.cta-pro:hover {
+
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow: 0 15px 35px rgba(0, 200, 83, 0.6);
+}
+
+/* ===================================================== */
+/* ===================== CLICK ========================= */
+/* ===================================================== */
+
+.cta-pro:active {
+    transform: scale(0.96);
+}
+
+/* ===================================================== */
+/* ================= FLECHA ANIMADA ==================== */
+/* ===================================================== */
+
+.cta-pro .arrow {
+    transition: transform 0.3s ease;
+}
+
+.cta-pro:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* ===================================================== */
+/* ================= EFECTO PULSE ====================== */
+/* ===================================================== */
+
+@keyframes pulse {
+
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(0, 200, 83, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 200, 83, 0);
+    }
+}
+
+/* ===================================================== */
+/* ============== APARECER CON SCROLL ================= */
+/* ===================================================== */
+
+.cta-pro.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+</style>
+
+<script>
+
+/* ===================================================== */
+/* ========= MOSTRAR BOTÓN AL HACER SCROLL ============ */
+/* ===================================================== */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+const botones = document.querySelectorAll(".cta-pro");
+
+function showOnScroll() {
+
+    const trigger = window.innerHeight * 0.8;
+
+    botones.forEach(btn => {
+
+        const rect = btn.getBoundingClientRect();
+
+        if (rect.top < trigger) {
+            btn.classList.add("visible");
+        }
+
+    });
+
+}
+
+window.addEventListener("scroll", showOnScroll);
+
+showOnScroll();
+});
+
+</script>
+
+        
+
+
+        <!-- ===================== FIN DEL BOTON COMPRAR NODO ===================== -->
+
+
+
+
+
+
+
+
+         <hr style="margin-top:60px; margin-bottom:60px;">
+
+
+        </main>
+
+  <!-- ===================== PIE DE PÁGINA ===================== -->
+  <section>
+    <div class="footer-top-green"></div>
+    <div class="footer-black">
+      <div class="left">© Copyright 2026 - All Rights Reserved - Criptovision Marketing Global Ecom</div>
+      <div class="right">
+        <a href="#" target="_blank" class="asm-link-telegram">Telegram</a>
+        <a href="#" target="_blank" class="asm-link-whatsapp">Whatsapp</a>
+        
+      </div>
+    </div>
+    <div class="footer-bottom-green"></div>
+  </section>
+
+  <!-- ===================== SCRIPT PARA EFECTO SCROLL ===================== -->
+  <script>
+    window.addEventListener("scroll", function() {
+      const nav = document.querySelector(".nav-bar");
+      if (window.scrollY > 50) {
+        nav.classList.add("scrolled");
+      } else {
+        nav.classList.remove("scrolled");
+      }
+    });
+  </script>
+
+<!-- FUEGOS ARTIFICIALES (sin causar overflow) -->
+
+
+    <script>
+        const fwColors = ['gold', 'white', '#ffd700', '#ffa500'];
+    function createFirework() {
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight * 0.4;
+      const particleCount = 30 + Math.floor(Math.random() * 40);
+
+      for (let i = 0; i < particleCount; i++) {
+        const p = document.createElement('div');
+        p.classList.add('firework-star');
+        p.style.left = `${x}px`;
+        p.style.top = `${y}px`;
+        const color = fwColors[Math.floor(Math.random() * fwColors.length)];
+        p.style.backgroundColor = color;
+        p.style.boxShadow = `0 0 15px ${color}, 0 0 30px ${color}`;
+        document.body.appendChild(p);
+
+        const angle = Math.random() * 2 * Math.PI;
+        const radius = 120 + Math.random() * 100;
+        const duration = 1500 + Math.random() * 1200;
+
+        setTimeout(() => {
+          p.style.transition = `transform ${duration}ms ease-out, opacity ${duration}ms ease-out`;
+          const dx = radius * Math.cos(angle);
+          const dy = radius * Math.sin(angle);
+          p.style.transform = `translate(${dx}px, ${dy}px) scale(0)`;
+          p.style.opacity = 0;
+        }, 50);
+
+        setTimeout(() => p.remove(), duration + 120);
+      }
+    }
+    setInterval(createFirework, 10000 + Math.random() * 6000);
+    </script>
+
+
+
+
+    <script src="../sistema/CONFIG.js"></script>
+    <script src="../sistema/02-ENLACES.js"></script>
+    <script src="../sistema/04-FUEGOS.js"></script>
+
+
+
+</body>
+
+</html>
+
