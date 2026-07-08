@@ -1,0 +1,38 @@
+{
+    "version": "2.0",
+
+    "vendedor": {
+        "nombre": "Maria",
+        "pais": "España",
+        "idioma": "es"
+    },
+
+    "whatsapp": {
+        "comprar": "81nobx",
+        "ayuda": "tikzvz",
+        "contacto": "mj9reh",
+        "alternativo": ""
+    },
+
+    "telegram": {
+        "contacto": "nodos_ascertex",
+        "alternativo": ""
+    },
+
+    "blockchain": {
+    "wallet": "0xB828B333333333333333333333333337777777A0"
+    },
+
+    "redes": {
+        "facebook": "",
+        "instagram": "",
+        "youtube": "",
+        "x": "",
+        "tiktok": "",
+        "linkedin": "",
+        "discord": "",
+        "github": "",
+        "sitioWeb": "",
+        "email": ""
+    }
+}
