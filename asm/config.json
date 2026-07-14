@@ -1,0 +1,38 @@
+{
+    "version": "2.0",
+
+    "vendedor": {
+        "nombre": "Richard",
+        "pais": "Argentina",
+        "idioma": "es"
+    },
+
+    "whatsapp": {
+        "comprar": "gc8hqf",
+        "ayuda": "10io9w",
+        "contacto": "gc8hqf",
+        "alternativo": ""
+    },
+
+    "telegram": {
+        "contacto": "nodosasm",
+        "alternativo": ""
+    },
+
+    "blockchain": {
+    "wallet": "0x6b7d98ee97bd4bb947ccff20078c2e45567dd84a"
+    },
+
+    "redes": {
+        "facebook": "",
+        "instagram": "",
+        "youtube": "",
+        "x": "",
+        "tiktok": "",
+        "linkedin": "",
+        "discord": "",
+        "github": "",
+        "sitioWeb": "",
+        "email": ""
+    }
+}
